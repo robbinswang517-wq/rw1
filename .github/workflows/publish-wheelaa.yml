@@ -1,0 +1,27 @@
+name: Publish wheelaa preview
+on:
+  push:
+    tags:
+      - v0.1.0-preview
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify exact prebuilt artifacts
+        working-directory: release-assets
+        run: sha256sum --check SHA256SUMS.txt
+      - name: Publish APK and corresponding source
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            release-assets/wheelaa-0.1.0-preview-debug.apk \
+            release-assets/wheelaa-0.1.0-source.zip \
+            release-assets/SHA256SUMS.txt \
+            --repo "$GITHUB_REPOSITORY" \
+            --verify-tag --prerelease \
+            --title "wheelaa 0.1.0-preview" \
+            --notes-file release-assets/RELEASE_NOTES.md

@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="referrer" content="no-referrer"><title>wheelaa · Android Auto</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><strong>wheelaa</strong><span id="status" role="status">等待配对 · Ready to pair</span><button id="fullscreen" type="button">全屏</button><button id="disconnect" type="button" hidden>断开</button></header>
+<main>
+<section id="pairing"><span class="eyebrow">ANDROID AUTO · WEB RECEIVER</span><h1>让 Android Auto<br>来到你的车机浏览器。</h1><p>将车机与 wheelaa 接收端连接同一局域网，输入接收端显示的六位配对码。</p><form id="pair-form"><label for="code">接收端配对码 / Pairing code</label><div class="pair-row"><input id="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="off" required placeholder="000000"><button id="connect" type="submit">配对并连接</button></div></form><p id="error" role="alert"></p><small>请保持接收端 Android Auto 投影在前台。首次配对后连接手机，画面将自动出现。仅限可信局域网，HTTP 未加密。</small></section>
+<section id="stage" hidden><img id="screen" alt="Android Auto 投影，等待接收端画面" draggable="false"><p id="waiting">等待 Android Auto 画面…</p></section>
+</main>
+<footer><span>JPEG 兼容模式 · ≤10 fps · 单指触控 · 音频由接收端播放</span><span>DiAuto / Open Headunit + WheelPlay · <a href="/source.zip">本版本完整源码与许可证 / Source</a></span></footer>
+<script type="module" src="/app.js"></script>
+</body></html>
